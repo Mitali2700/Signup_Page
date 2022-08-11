@@ -42,7 +42,9 @@ app.post("/",function(req,res){
         ]
     };
 
-    
+    // Now we should convert this JS Object into "flatpack JSON"
+
+    const jsonData = JSON.stringify(data);
 
 });
 // we're going to set our web page up with the MailChimp API to start sending this data over to their servers. 
