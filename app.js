@@ -3,6 +3,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const request = require("request");
+const https = require("https");
 
 const app = express();
 
@@ -46,6 +47,11 @@ app.post("/",function(req,res){
 
     const jsonData = JSON.stringify(data);
 
+    //Creating https request
+    const url ="https://us8.api.mailchimp.com/3.0/lists/60ea5ca8d4";
+    https.request(url,options, function(response){
+
+    })
 });
 // we're going to set our web page up with the MailChimp API to start sending this data over to their servers. 
 
@@ -79,6 +85,10 @@ Now again go to "Audience" section --> "Audience fields and *|MERGE|* tags"
 Now convert js to JSON
 
 To make a request
+
+Create constant for https module :  https://mailchimp.com/developer/marketing/docs/fundamentals/#Code_examples
+'https://usX.api.mailchimp.com/3.0/lists/"listid"'
+replace X with the no,. that you have in your APU key after us
 */
 
 
