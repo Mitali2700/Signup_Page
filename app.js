@@ -14,18 +14,35 @@ app.get("/",function(req,res){
 });
 
 app.post("/",function(req,res){
-    var firstName = req.body.fName;
-    var lastName = req.body.lName;
-    var email = req.body.email;
+    const firstName = req.body.fName;
+    const lastName = req.body.lName;
+    const email = req.body.email;
     // console.log(firstName);
     // console.log("\n");
     // console.log(lastName);
     // console.log("\n");
     // console.log(email);
 
-    console.log(firstName);
+   /* console.log(firstName);
     console.log(lastName);
     console.log(email);  
+    */
+
+    const data= {
+        members: [
+            {
+                email_address : email,
+                status:"subscribed" ,
+                merge_fields :{
+                    FNAME: firstName,
+                    LNAME: lastName,
+
+                }
+            }
+        ]
+    };
+
+    
 
 });
 // we're going to set our web page up with the MailChimp API to start sending this data over to their servers. 
@@ -48,6 +65,18 @@ https://mailchimp.com/developer/marketing/api/lists/batch-subscribe-or-unsubscri
 
 Now go to mailchimp.com  -->  Audience
 
+https://us8.admin.mailchimp.com/lists/settings?id= __<- Unique id
+
+Unique ID - 60ea5ca8d4   //List ID
+
+Now we create our data that we want to post as a JSON.
+So, lets create JS Object inside app.post
+
+Now again go to "Audience" section --> "Audience fields and *|MERGE|* tags"
+
+Now convert js to JSON
+
+To make a request
 */
 
 
