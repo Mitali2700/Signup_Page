@@ -29,7 +29,7 @@ app.post("/",function(req,res){
     console.log(email);  
     */
 
-    const data= {
+    var data= {
         members: [
             {
                 email_address : email,
@@ -49,11 +49,24 @@ app.post("/",function(req,res){
 
     //Creating https request
     const url ="https://us8.api.mailchimp.com/3.0/lists/60ea5ca8d4";
-    https.request(url,options, function(response){
+    const options ={
+        method: "POST",
+        auth:"manu1:687eca5f53384623bcc65d49e7590f57-us8", // Its region (which is us8) should match with url (which is us8))
 
+
+    }
+    
+    const request2 = https.request(url,options, function(response){
+        response.on("data", function(data){
+            console.log(JSON.parse(data));
+        })
     })
+    request2.write(jsonData);
+request2.end();
 });
 // we're going to set our web page up with the MailChimp API to start sending this data over to their servers. 
+
+
 
 
 /*
@@ -89,6 +102,9 @@ To make a request
 Create constant for https module :  https://mailchimp.com/developer/marketing/docs/fundamentals/#Code_examples
 'https://usX.api.mailchimp.com/3.0/lists/"listid"'
 replace X with the no,. that you have in your APU key after us
+
+
+After adding method and auth we are ready to generate http request.
 */
 
 
@@ -96,7 +112,8 @@ app.listen(3000, function(){
     console.log("Server is running on port 3000");
 });
 
+//API Key
 
 // 687eca5f53384623bcc65d49e7590f57-us8
-// dc0ebebe7317ac4ca1347fd5c4652150-us8
+
 
