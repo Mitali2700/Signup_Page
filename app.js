@@ -10,7 +10,7 @@ const app = express();
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({extended: true}));
 
-app.get("/",function(req,res){
+app.get("/", function(req,res){
     res.sendFile(__dirname+ "/signup.html");
 });
 
@@ -58,9 +58,11 @@ app.post("/",function(req,res){
     
     const request = https.request(url,options, function(response){
         if(response.statusCode === 200){
-            res.send("Succesfully subscribed!");
+            //res.send("Succesfully subscribed!");
+            res.sendFile(__dirname + "/success.html");
         }else{
-            res.send("There was an error with signing up, please try again");
+            //res.send("There was an error with signing up, please try again");
+            res.sendFile(__dirname + "/failure.html");
         }
 
         response.on("data", function(data){
@@ -71,7 +73,6 @@ app.post("/",function(req,res){
 request.end();
 });
 // we're going to set our web page up with the MailChimp API to start sending this data over to their servers. 
-
 
 
 
@@ -113,6 +114,11 @@ replace X with the no,. that you have in your APU key after us
 After adding method and auth we are ready to generate http request.
 */
 
+
+//by clicking on button it will redirect to home page.
+app.post("/failure", function(req, res){
+    res.redirect("/")
+})
 
 app.listen(3000, function(){
     console.log("Server is running on port 3000");
