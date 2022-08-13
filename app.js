@@ -1,8 +1,8 @@
 //jshint esversion: 6
 
 const express = require("express");
-const bodyParser = require("body-parser");
 const request = require("request");
+const bodyParser = require("body-parser");
 const https = require("https");
 
 const app = express();
@@ -11,7 +11,7 @@ app.use(express.static("public"));
 app.use(bodyParser.urlencoded({extended: true}));
 
 app.get("/",function(req,res){
-    res.sendFile(__dirname+"/signup.html");
+    res.sendFile(__dirname+ "/signup.html");
 });
 
 app.post("/",function(req,res){
@@ -51,18 +51,19 @@ app.post("/",function(req,res){
     const url ="https://us8.api.mailchimp.com/3.0/lists/60ea5ca8d4";
     const options ={
         method: "POST",
-        auth:"manu1:687eca5f53384623bcc65d49e7590f57-us8", // Its region (which is us8) should match with url (which is us8))
+        auth:"manu1:c3d43bc8d8d62917b22551a891935cce-us8", // Its region (which is us8) should match with url (which is us8))
 
 
     }
     
-    const request2 = https.request(url,options, function(response){
+    const request = https.request(url,options, function(response){
+        
         response.on("data", function(data){
             console.log(JSON.parse(data));
         })
     })
-    request2.write(jsonData);
-request2.end();
+    request.write(jsonData);
+request.end();
 });
 // we're going to set our web page up with the MailChimp API to start sending this data over to their servers. 
 
