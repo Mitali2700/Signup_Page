@@ -120,12 +120,24 @@ app.post("/failure", function(req, res){
     res.redirect("/")
 })
 
+// Here we are using local port
+/*
 app.listen(3000, function(){
     console.log("Server is running on port 3000");
 });
+*/
+
+// DYNAMIC PORT
+app.listen(process.env.PORT || 3000 , function(){
+    console.log("Server is running on port 3000");
+});
+// So by changing our port to this, it'll allow us to work seamlessly with their system.But the problem is that if we try to run this app now locally using localhost, then our computer won't.
+// So for running our web site locally and dynamically we use or 3000
+
+
 
 //API Key
-
-// 687eca5f53384623bcc65d49e7590f57-us8
-
+//  c3d43bc8d8d62917b22551a891935cce-us8
+//List ID or Unique ID 
+//60ea5ca8d4
 
