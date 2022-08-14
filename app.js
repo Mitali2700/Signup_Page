@@ -59,12 +59,12 @@ app.post("/",function(req,res){
     const request = https.request(url,options, function(response){
         if(response.statusCode === 200){
             //res.send("Succesfully subscribed!");
-            //res.sendFile(__dirname + "/success.html");
-            res.sendFile(__dirname + "/failure.html");
+            res.sendFile(__dirname + "/success.html");
+            //res.sendFile(__dirname + "/failure.html");
         }else{
             //res.send("There was an error with signing up, please try again");
-            //res.sendFile(__dirname + "/failure.html");
-            res.sendFile(__dirname + "/success.html");
+            res.sendFile(__dirname + "/failure.html");
+            //res.sendFile(__dirname + "/success.html");
         }
 
         response.on("data", function(data){
