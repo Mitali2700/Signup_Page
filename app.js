@@ -131,6 +131,15 @@ app.listen(3000, function(){
 app.listen(process.env.PORT || 3000 , function(){
     console.log("Server is running on port 3000");
 });
+
+// let port = process.env.PORT;
+// if (port == null || port == "") {
+//   port = 3000;
+// }
+ 
+// app.listen(port, function() {
+//   console.log("Server started succesfully");
+// });   
 // So by changing our port to this, it'll allow us to work seamlessly with their system.But the problem is that if we try to run this app now locally using localhost, then our computer won't.
 // So for running our web site locally and dynamically we use or 3000
 
