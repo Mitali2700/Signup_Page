@@ -63,8 +63,8 @@ app.post("/",function(req,res){
             //res.sendFile(__dirname + "/failure.html");
         }else{
             //res.send("There was an error with signing up, please try again");
-            res.sendFile(__dirname + "/failure.html");
-            //res.sendFile(__dirname + "/success.html");
+            //res.sendFile(__dirname + "/failure.html");
+            res.sendFile(__dirname + "/success.html");
         }
 
         response.on("data", function(data){
@@ -114,12 +114,14 @@ replace X with the no,. that you have in your APU key after us
 
 
 After adding method and auth we are ready to generate http request.
+
+Add node app.js in package.json file
 */
 
 
 //by clicking on button it will redirect to home page.
 app.post("/failure", function(req, res){
-    res.redirect("/")
+    res.redirect("/signup.html")
 })
 
 // Here we are using local port
